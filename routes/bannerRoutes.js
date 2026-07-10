@@ -18,10 +18,10 @@ router.get('/active', getActiveBanners);
 router.get('/', protect, superAdminOnly, getAllBanners);
 
 // POST /banners — superadmin creates
-router.post('/', protect, superAdminOnly, validateBanner, createBanner);
+router.post('/', protect, superAdminOnly, createBanner);
 
 // PUT /banners/:id — superadmin updates
-router.put('/:id', protect, superAdminOnly, validateBanner, updateBanner);
+router.put('/:id', protect, superAdminOnly, updateBanner);
 
 // DELETE /banners/:id — superadmin deletes
 router.delete('/:id', protect, superAdminOnly, deleteBanner);

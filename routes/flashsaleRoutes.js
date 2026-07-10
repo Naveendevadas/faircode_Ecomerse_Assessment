@@ -26,7 +26,6 @@ router.post('/', protect, superAdminOnly, validateFlashSale, createFlashSale);
 
 // PUT /flashsale/:id — superadmin updates
 router.put('/:id', protect, superAdminOnly, validateFlashSale, updateFlashSale);
-
 // DELETE /flashsale/:id — superadmin deletes
 router.delete('/:id', protect, superAdminOnly, deleteFlashSale);
 

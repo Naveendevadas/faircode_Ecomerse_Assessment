@@ -22,9 +22,26 @@ const productSchema = new mongoose.Schema(
       min: [0, 'Quantity cannot be negative'],
       default: 0,
     },
-    image: {
-      type: String,
-      default: '',
+    images: [
+      {
+        type: String,
+        trim: true,
+      }
+    ],
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Category',
+      required: [true, 'Category is required'],
+    },
+    subcategory: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Category',
+      default: null,
+    },
+    subSubcategory: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Category',
+      default: null,
     },
     status: {
       type: String,
@@ -36,13 +53,16 @@ const productSchema = new mongoose.Schema(
       ref: 'FlashSale',
       default: null,
     },
+    isFeatured: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
 
-productSchema.pre('save', function (next) {
+productSchema.pre('save', function () {
   this.status = this.quantity > 0 ? 'In Stock' : 'Out Of Stock';
-  next();
 });
 
-module.exports = mongoose.model('Product', productSchema);
+module.exports = mongoose.models.Product || mongoose.model('Product', productSchema);
