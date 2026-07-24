@@ -1,5 +1,5 @@
 const Product = require('../models/Product');
-const Category = require('../models/Categorymodel');
+const Category = require('../models/Category');
 const asyncHandler = require('../utils/asyncHandler');
 const mongoose = require('mongoose'); // ← NEW
 
